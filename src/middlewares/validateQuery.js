@@ -5,13 +5,17 @@ export const validateQuery = (schema) => async (req, res, next) => {
        await schema.validateAsync(req.query, {
             abortEarly: false,
             allowUnknown: false,
-            convert: true,
+           convert: true,
+           errors: { wrap: { label: false } },
         });
         next();
     } catch (err) {
         const error = createHttpError(400, 'Bad request', {
-            errors: err.details,
-        });
+        errors: err.details.map((err) => ({
+        path: err.path,
+        message: err.message,
+      })),
+    });
         next(error);
     };
 };
