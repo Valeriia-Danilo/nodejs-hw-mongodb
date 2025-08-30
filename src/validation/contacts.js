@@ -1,4 +1,5 @@
 import Joi from "joi";
+import { isValidObjectId } from "mongoose";
 
 export const createContactSchema = Joi.object({
   name: Joi.string().min(3).max(20).required().messages({
@@ -33,6 +34,15 @@ export const createContactSchema = Joi.object({
       'any.only'     : 'The "{#label}" field must be one of: {#valids}',
       'any.required' : 'The "{#label}" field is required',
     }),
+     userId: Joi.string().required().messages({
+    'string.base'  : 'The "{#label}" field must be a string',
+    'any.required' : 'The "{#label}" field is required',
+  }).custom((value, helper) => {
+        if (value && !isValidObjectId(value)) {
+            return helper.message('Id is not valid');
+        }
+        return true;
+    }),
 });
 
 
@@ -65,6 +75,15 @@ name: Joi.string().min(3).max(20).messages({
       'string.min'   : 'The "{#label}" field must have at least {#limit} characters',
       'string.max'   : 'The {#label} field must have at most {#limit} characters',
       'any.only'     : 'The "{#label}" field must be one of: {#valids}',
+    }),
+   userId: Joi.string().messages({
+    'string.base'  : 'The "{#label}" field must be a string',
+    'any.required' : 'The "{#label}" field is required',
+  }).custom((value, helper) => {
+        if (value && !isValidObjectId(value)) {
+            return helper.message('Id is not valid');
+        }
+        return true;
     }),
 });
 
