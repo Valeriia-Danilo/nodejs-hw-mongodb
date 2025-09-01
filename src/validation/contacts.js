@@ -34,9 +34,8 @@ export const createContactSchema = Joi.object({
       'any.only'     : 'The "{#label}" field must be one of: {#valids}',
       'any.required' : 'The "{#label}" field is required',
     }),
-     userId: Joi.string().required().messages({
+     userId: Joi.string().messages({
     'string.base'  : 'The "{#label}" field must be a string',
-    'any.required' : 'The "{#label}" field is required',
   }).custom((value, helper) => {
         if (value && !isValidObjectId(value)) {
             return helper.message('Id is not valid');
@@ -78,7 +77,6 @@ name: Joi.string().min(3).max(20).messages({
     }),
    userId: Joi.string().messages({
     'string.base'  : 'The "{#label}" field must be a string',
-    'any.required' : 'The "{#label}" field is required',
   }).custom((value, helper) => {
         if (value && !isValidObjectId(value)) {
             return helper.message('Id is not valid');
