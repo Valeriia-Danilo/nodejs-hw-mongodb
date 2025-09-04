@@ -41,7 +41,8 @@ export const createContactSchema = Joi.object({
             return helper.message('Id is not valid');
         }
         return true;
-    }),
+  }),
+     photo: Joi.string(),
 });
 
 
@@ -82,7 +83,8 @@ name: Joi.string().min(3).max(20).messages({
             return helper.message('Id is not valid');
         }
         return true;
-    }),
+  }),
+   photo: Joi.string(),
 });
 
 export const contactQuerySchema = Joi.object({
