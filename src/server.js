@@ -1,11 +1,13 @@
 import express from 'express';
-import { getEnvVar } from './utils/getEnvVar.js';
 import cors from 'cors';
+import cookieParser from "cookie-parser";
 import pino from 'pino-http';
 import router from './routers/index.js';
+import { getEnvVar } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
-import cookieParser from "cookie-parser";
+
+
 
 
 const PORT = Number(getEnvVar('PORT', '3000'));

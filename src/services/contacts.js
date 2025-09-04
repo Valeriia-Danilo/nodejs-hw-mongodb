@@ -56,12 +56,12 @@ const { userId, ...rest } = payload;
 };
 
 export const updateContact = async ({contactId, payload, userId}) => {
-  const contacts = await ContactsCollection.findOneAndUpdate(
+  const contact = await ContactsCollection.findOneAndUpdate(
     { _id: contactId, userId },
     payload,
     { new: true },
   );
-  return contacts;
+  return contact;
 };
 
 export const deleteContact = async ({ contactId, userId }) => {
