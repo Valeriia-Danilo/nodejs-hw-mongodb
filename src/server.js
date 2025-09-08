@@ -7,6 +7,8 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
+
 
 
 
@@ -35,10 +37,7 @@ export const setupServer = () => {
   app.use(notFoundHandler);
   app.use(errorHandler);
 
-
-
-
-
+   app.use('/api-docs', swaggerDocs());
 
     app.listen(PORT, () => {
 console.log(`Server is running on port ${PORT}`);

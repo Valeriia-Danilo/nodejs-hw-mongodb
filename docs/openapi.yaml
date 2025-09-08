@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: <назва вашого додатку>
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: <опис вашого додатку>
+tags:
+  - name: Contacts
+    description: CRUD operations with user contacts (create, read, update, delete contacts)
+  - name: Auth
+    description: Auth operations. Registration, login, logout, reset pwd.
+servers:
+  - url: http://localhost:3000
+  - url: http://localhost:3000
+paths:
+  /contacts:
+    get:
+      $ref: './swagger/paths/contacts/get.yaml'
+    post:
+      $ref: './swagger/paths/contacts/post.yaml'
+  /contacts/{id}:
+    get:
+      $ref: './swagger/paths/contacts/{id}/get.yaml'
+    delete:
+        $ref: './swagger/paths/contacts/{id}/delete.yaml'
+    patch:
+      $ref: './swagger/paths/contacts/{id}/patch.yaml'
+  /auth/register:
+    post:
+      $ref: './swagger/paths/auth/register.yaml'
+  /auth/login:
+    post:
+      $ref: './swagger/paths/auth/login.yaml'
+  /auth/logout:
+    post:
+      $ref: './swagger/paths/auth/logout.yaml'
+  /auth/refresh:
+    post:
+      $ref: './swagger/paths/auth/refresh.yaml'
+  /auth/send-reset-email:
+    post:
+      $ref: './swagger/paths/auth/sendResetEmail.yaml'
+  /auth/reset-pwd:
+    post:
+      $ref: swagger/paths/auth/resetPwd.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
