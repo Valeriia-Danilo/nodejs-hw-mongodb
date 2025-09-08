@@ -1,0 +1,32 @@
+description: Not Found error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - status
+        - message
+        - data
+      properties:
+        status:
+          type: integer
+          example: 404
+        message:
+          type: string
+          example: NotFoundError
+        data:
+          type: string
+          example: Resource not found
+    examples:
+      contactNotFound:
+        summary: Contact not found
+        value:
+          status: 404
+          message: NotFoundError
+          data: Contact not found
+      userNotFound:
+        summary: User not found
+        value:
+          status: 404
+          message: NotFoundError
+          data: User not found

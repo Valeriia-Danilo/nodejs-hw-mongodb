@@ -1,0 +1,51 @@
+description: Unauthorized error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - status
+        - message
+        - data
+      properties:
+        status:
+          type: integer
+          example: 401
+        message:
+          type: string
+          example: UnauthorizedError
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Session not found
+    examples:
+      sessionNotFound:
+        summary: Session does not exist
+        value:
+          status: 401
+          message: UnauthorizedError
+          data:
+            message: Session not found
+      expiredToken:
+        summary: Token is expired
+        value:
+          status: 401
+          message: UnauthorizedError
+          data:
+            message: Access token expired
+      missingToken:
+        summary: Authorization header is missing
+        value:
+          status: 401
+          message: UnauthorizedError
+          data:
+            message: Authorization header missing
+      invalidToken:
+        summary: Token is invalid
+        value:
+          status: 401
+          message: UnauthorizedError
+          data:
+            message: Invalid access token
