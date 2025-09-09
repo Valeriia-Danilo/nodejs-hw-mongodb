@@ -13,7 +13,7 @@ tags:
     description: Auth operations. Registration, login, logout, reset pwd.
 servers:
   - url: http://localhost:3000
-  - url: http://localhost:3000
+  - url: https://nodejs-hw-hw7-swagger.onrender.com
 paths:
   /contacts:
     get:
